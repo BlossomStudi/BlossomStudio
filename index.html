@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blossom Studios — Modeling Agency</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Blossom Studios is a boutique modeling agency representing diverse talent for fashion, beauty, and commercial campaigns."
+  />
+  <style>
+    :root {
+      --primary: #f47ba8;
+      --primary-soft: #ffe4ee;
+      --bg: #ffffff;
+      --text: #1d1b21;
+      --muted: #6e6b78;
+      --border: #f0eef4;
+      --shadow-soft: 0 18px 40px rgba(15, 14, 23, 0.12);
+      --radius-lg: 20px;
+      --radius-full: 999px;
+      --transition-fast: 180ms ease-out;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: #f9f6fb;
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(249, 246, 251, 0.9);
+      border-bottom: 1px solid rgba(240, 238, 244, 0.8);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 20%, #ffeef6, #f47ba8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: 0 8px 24px rgba(244, 123, 168, 0.45);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.25rem 0;
+      color: var(--muted);
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f47ba8, #f3a6c4);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      padding: 0.55rem 1.05rem;
+      font-size: 0.9rem;
+      font-weight: 550;
+      cursor: pointer;
+      background: #fff;
+      color: var(--text);
+      box-shadow: 0 8px 18px rgba(15, 14, 23, 0.06);
+      transition:
+        background var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 20% 0, #ffe4ee, #f47ba8);
+      color: #211319;
+      border-color: rgba(244, 123, 168, 0.5);
+      box-shadow: 0 12px 30px rgba(244, 123, 168, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(244, 123, 168, 0.55);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(210, 206, 220, 0.9);
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-1px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.08);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(244, 123, 168, 0.45);
+      background: rgba(255, 244, 250, 0.9);
+      font-size: 0.75rem;
+      color: #bf416e;
+      font-weight: 500;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #30c18e;
+      box-shadow: 0 0 0 6px rgba(48, 193, 142, 0.26);
+    }
+
+    /* Mobile nav button */
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      padding: 3.5rem 0 3.25rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-title span.accent {
+      background-image: linear-gradient(120deg, #f47ba8, #f9a8d4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 32rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-note strong {
+      color: var(--text);
+      font-weight: 550;
+    }
+
+    .hero-note-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--border);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(216, 178, 205, 0.7);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(255, 247, 252, 0.95),
+          transparent 58%
+        ),
+        #131018 url("https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg?auto=compress&cs=tinysrgb&w=1200")
+          center/cover no-repeat;
+      min-height: 320px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 1.25rem 1.3rem;
+      color: #fff;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(19, 16, 24, 0.25),
+        rgba(19, 16, 24, 0.9)
+      );
+      z-index: -1;
+    }
+
+    .hero-card-content {
+      max-width: 90%;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: rgba(13, 241, 169, 0.14);
+      border: 0.5px solid rgba(199, 255, 229, 0.65);
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #0df1a9;
+    }
+
+    .hero-card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-card p {
+      font-size: 0.85rem;
+      opacity: 0.92;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.78rem;
+      opacity: 0.96;
+    }
+
+    .hero-chip-row {
+      position: absolute;
+      inset: auto auto 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .hero-chip {
+      background: rgba(255, 255, 255, 0.96);
+      color: #1a141c;
+      border-radius: var(--radius-full);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.72rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 8px 26px rgba(9, 7, 15, 0.55);
+    }
+
+    .hero-chip img {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      top: 1.2rem;
+      right: 0.8rem;
+      background: #fff;
+      border-radius: 18px;
+      padding: 0.7rem 0.75rem;
+      box-shadow: 0 14px 40px rgba(12, 10, 18, 0.45);
+      font-size: 0.7rem;
+      min-width: 150px;
+      display: grid;
+      gap: 0.1rem;
+      transform: translateY(0);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-floating-card strong {
+      font-size: 0.78rem;
+    }
+
+    .hero-floating-card span {
+      color: #7a7583;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.3rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 0.1rem 0.55rem;
+      border: 1px solid #f4e3ff;
+      background: #fdf8ff;
+      font-size: 0.67rem;
+      color: #7f2a56;
+      font-weight: 500;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* Sections */
+
+    section {
+      padding: 2.5rem 0 2.75rem;
+    }
+
+    section:nth-of-type(odd) {
+      background: #fefbff;
+    }
+
+    section:nth-of-type(even) {
+      background: #f8f3fb;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 24rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      gap: 1.8rem;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      align-items: flex-start;
+    }
+
+    .about-text {
+      font-size: 0.94rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .about-text strong {
+      color: var(--text);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 0.3rem;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 0.8rem 0.85rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.06);
+    }
+
+    .stat-value {
+      font-weight: 650;
+      font-size: 1.1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .about-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.1rem 1.1rem 1rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 36px rgba(15, 14, 23, 0.08);
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+    }
+
+    .about-card-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .about-pill {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: #fef2f8;
+      border: 1px solid rgba(244, 123, 168, 0.35);
+      color: #c93b71;
+      font-weight: 500;
+    }
+
+    /* Talent grid */
+
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .model-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(15, 14, 23, 0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .model-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+    }
+
+    .model-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 220ms ease-out;
+    }
+
+    .model-card:hover .model-photo img {
+      transform: scale(1.05);
+    }
+
+    .model-label {
+      position: absolute;
+      inset: 0.7rem auto auto 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      background: rgba(244, 123, 168, 0.92);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .model-body {
+      padding: 0.7rem 0.8rem 0.75rem;
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.82rem;
+    }
+
+    .model-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .model-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.15rem;
+    }
+
+    .model-city {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .model-measures {
+      font-size: 0.78rem;
+      color: #7c2b53;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: #fff4fb;
+      border: 1px solid #ffd3ec;
+      font-weight: 500;
+    }
+
+    .model-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.2rem;
+    }
+
+    .model-tag {
+      font-size: 0.72rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: #f4f0ff;
+      color: #4a3388;
+    }
+
+    /* Services */
+
+    .services-grid {
+      display: grid;
+      gap: 1.1rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1rem 1rem 0.9rem;
+      box-shadow: 0 12px 30px rgba(15, 14, 23, 0.06);
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 13px;
+      border: 1px solid rgba(244, 123, 168, 0.35);
+      background: radial-gradient(circle at 20% 0, #ffeef6, #f47ba8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-title {
+      font-weight: 600;
+    }
+
+    .service-footer {
+      margin-top: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .service-chip {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: #fdf2ff;
+      border: 1px solid #f7cfff;
+      color: #8a3862;
+      font-weight: 500;
+      font-size: 0.72rem;
+    }
+
+    /* Contact */
+
+    .contact-layout {
+      display: grid;
+      gap: 1.8rem;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 1.1rem 1.1rem 1rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    label {
+      font-size: 0.78rem;
+      font-weight: 550;
+      color: #4d4956;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    input,
+    select,
+    textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(213, 209, 222, 0.9);
+      padding: 0.55rem 0.65rem;
+      font-family: inherit;
+      font-size: 0.86rem;
+      outline: none;
+      background: #fcfaff;
+      transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(244, 123, 168, 0.3);
+      background: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .helper {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.7rem;
+    }
+
+    .form-status {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .contact-info {
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .info-block {
+      background: #fff;
+      border-radius: 18px;
+      padding: 0.9rem 0.95rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.06);
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #a29caf;
+      margin-bottom: 0.15rem;
+    }
+
+    .info-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .info-inline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+    }
+
+    .social-pill {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(184, 173, 213, 0.9);
+      background: #f9f5ff;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #0f0b13;
+      color: #f9f5ff;
+      padding: 1.5rem 0 1.4rem;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      font-size: 0.78rem;
+      color: #b3a7c8;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: #fff;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .models-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      header {
+        border-bottom: 1px solid rgba(240, 238, 244, 0.95);
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mobile-nav-open .nav-links,
+      .mobile-nav-open .nav-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+        padding: 0.8rem 0 0.7rem;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .models-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        min-height: 260px;
+      }
+
+      .hero-floating-card {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      section {
+        padding-top: 2rem;
+        padding-bottom: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="nav" id="mainNav">
+          <div class="logo">
+            <div class="logo-mark">B</div>
+            <div class="logo-text">
+              <span>Blossom Studios</span>
+              <span>Modeling Agency</span>
+            </div>
+          </div>
+          <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+            ☰
+          </button>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#talent">Talent</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="nav-cta">
+            <button class="btn btn-outline" onclick="scrollToSection('talent')">
+              View talent
+            </button>
+            <button class="btn btn-primary" onclick="scrollToSection('contact')">
+              Become a model
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div>
+            <div class="hero-eyebrow">
+              <span class="badge">
+                <span class="badge-dot"></span>
+                Now scouting new faces for 2025 campaigns
+              </span>
+            </div>
+            <h1 class="hero-title">
+              Where <span class="accent">new faces</span> blossom into timeless brands.
+            </h1>
+            <p class="hero-subtitle">
+              Blossom Studios is a boutique agency championing diverse talent for fashion, beauty, and commercial work — from fresh faces to established names.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="scrollToSection('contact')">
+                Submit application
+              </button>
+              <button class="btn btn-outline" onclick="scrollToSection('services')">
+                Book talent
+              </button>
+            </div>
+            <div class="hero-note">
+              <strong>24–48h response time</strong>
+              <span class="hero-note-dot"></span>
+              <span>Portfolio or social link recommended</span>
+            </div>
+            <div class="hero-meta">
+              <span>NYC · LA · Remote castings</span>
+              <span>Runway · Editorial · Commercial</span>
+              <span>Inclusive & story-driven representation</span>
+            </div>
+          </div>
+          <div class="hero-media" aria-hidden="true">
+            <div class="hero-card">
+              <div class="hero-card-overlay"></div>
+              <div class="hero-card-content">
+                <div class="hero-tag">
+                  <span class="hero-tag-dot"></span>
+                  SS25 Campaign Casting · In progress
+                </div>
+                <h2>BLOSSOM EDITORIAL BOARD</h2>
+                <p>Curated talent for fashion houses, beauty brands, and creative studios.</p>
+                <div class="hero-card-meta">
+                  <span>12 talents shortlisted</span>
+                  <span>Bookings open · Q2</span>
+                </div>
+              </div>
+              <div class="hero-chip-row">
+                <div class="hero-chip">
+                  <img
+                    src="https://images.pexels.com/photos/1988681/pexels-photo-1988681.jpeg?auto=compress&cs=tinysrgb&w=200"
+                    alt="Model headshot"
+                  />
+                  <span>
+                    <strong>Amara · 5'9"</strong> · Beauty & runway
+                  </span>
+                </div>
+                <div class="hero-chip">
+                  <span>↻</span>
+                  <span>Same-day digital packages for clients</span>
+                </div>
+              </div>
+              <div class="hero-floating-card">
+                <strong>New faces board</strong>
+                <span>Updated weekly with fresh talent from global submissions.</span>
+                <div class="pill-row">
+                  <span class="pill">Runway</span>
+                  <span class="pill">Beauty</span>
+                  <span class="pill">Lifestyle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">A studio-first approach to representation.</h2>
+            <p class="section-subtitle">
+              We bridge the gap between talent and creative teams, prioritizing kindness, clarity, and long-term growth over one-off bookings.
+            </p>
+          </div>
+          <div class="about-grid">
+            <div>
+              <div class="about-text">
+                <p>
+                  <strong>Blossom Studios</strong> was founded on a simple idea: talent should feel supported, seen, and celebrated at every stage of their career.
+                </p>
+                <p>
+                  Our agency works closely with designers, photographers, and producers to match the right faces with the right stories — from runway shows and editorial campaigns to commercial and digital projects.
+                </p>
+                <p>
+                  We champion inclusive casting, transparent communication, and thoughtful career development, helping each model grow at a pace that feels sustainable and authentic.
+                </p>
+              </div>
+              <div class="about-stats">
+                <div class="stat-card">
+                  <div class="stat-value">120+</div>
+                  <div class="stat-label">Signed talents worldwide</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">35+</div>
+                  <div class="stat-label">Brands booked in 2024</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">4.9★</div>
+                  <div class="stat-label">Client partner rating</div>
+                </div>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-title">What we look for</div>
+              <p>
+                We review every submission with care. While traditional measurements can matter for certain clients, we also value presence, professionalism, uniqueness, and how you move in front of the camera.
+              </p>
+              <div class="about-pill-row">
+                <span class="about-pill">Runway & editorial</span>
+                <span class="about-pill">Commercial & lifestyle</span>
+                <span class="about-pill">Content creators</span>
+                <span class="about-pill">All gender identities</span>
+                <span class="about-pill">New faces welcome</span>
+              </div>
+              <p class="helper">
+                No experience yet? That’s okay. Share clear digitals and a short note about your availability and goals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Talent -->
+      <section id="talent">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Featured talent</h2>
+            <p class="section-subtitle">
+              A snapshot of our current board. Full books and additional options are available on request for each project.
+            </p>
+          </div>
+          <div class="models-grid">
+            <!-- Model 1 -->
+            <article class="model-card">
+              <div class="model-photo">
+                <img
+                  src="https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Model Amara"
+                />
+                <span class="model-label">Editorial · Runway</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Amara</div>
+                <div class="model-meta">
+                  <span class="model-city">Based in NYC</span>
+                  <span class="model-measures">5'9" · 32 · 24 · 35</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Beauty</span>
+                  <span class="model-tag">High fashion</span>
+                </div>
+              </div>
+            </article>
+            <!-- Model 2 -->
+            <article class="model-card">
+              <div class="model-photo">
+                <img
+                  src="https://images.pexels.com/photos/977628/pexels-photo-977628.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Model Luca"
+                />
+                <span class="model-label">Commercial · Lifestyle</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Luca</div>
+                <div class="model-meta">
+                  <span class="model-city">Based in Los Angeles</span>
+                  <span class="model-measures">6'1" · 38R</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Lifestyle</span>
+                  <span class="model-tag">Campaigns</span>
+                </div>
+              </div>
+            </article>
+            <!-- Model 3 -->
+            <article class="model-card">
+              <div class="model-photo">
+                <img
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Model Sora"
+                />
+                <span class="model-label">Runway · Editorial</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Sora</div>
+                <div class="model-meta">
+                  <span class="model-city">Based in Seoul / Paris</span>
+                  <span class="model-measures">5'10" · 30 · 23 · 34</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Runway</span>
+                  <span class="model-tag">Avant-garde</span>
+                </div>
+              </div>
+            </article>
+            <!-- Model 4 -->
+            <article class="model-card">
+              <div class="model-photo">
+                <img
+                  src="https://images.pexels.com/photos/4664520/pexels-photo-4664520.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="Model Nia"
+                />
+                <span class="model-label">Beauty · Digital</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Nia</div>
+                <div class="model-meta">
+                  <span class="model-city">Based in London</span>
+                  <span class="model-measures">5'7" · 34 · 26 · 37</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Beauty</span>
+                  <span class="model-tag">Creator</span>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="helper" style="margin-top: 0.9rem;">
+            Looking for something specific? Email us your brief and reference boards — we’ll build a tailored casting shortlist.
+          </p>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Services for brands & creatives</h2>
+            <p class="section-subtitle">
+              From first moodboard to final call sheet, we support productions of all sizes with thoughtful casting and communication.
+            </p>
+          </div>
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon">★</div>
+              <div class="service-title">Editorial & runway</div>
+              <p>
+                Casting and coordination for fashion weeks, editorial shoots, lookbooks, and designer presentations.
+              </p>
+              <div class="service-footer">
+                <span>Ideal for seasonal collections.</span>
+                <span class="service-chip">3–10+ talents</span>
+              </div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">◎</div>
+              <div class="service-title">Commercial & e-commerce</div>
+              <p>
+                Talent for campaigns, social, catalogs, and product launches featuring inclusive casting and clear usage terms.
+              </p>
+              <div class="service-footer">
+                <span>Flexible day rates & usage.</span>
+                <span class="service-chip">Ongoing or one-off</span>
+              </div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon">∞</div>
+              <div class="service-title">Content & creator partnerships</div>
+              <p>
+                Pair brands with models and creators who can deliver on-brand content for digital and social-first campaigns.
+              </p>
+              <div class="service-footer">
+                <span>Great for launches & drops.</span>
+                <span class="service-chip">Creator-led</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Let’s work together</h2>
+            <p class="section-subtitle">
+              Use the form to apply as a model or to book talent. Our team replies to most messages within two business days.
+            </p>
+          </div>
+          <div class="contact-layout">
+            <div class="contact-card">
+              <h3>Application & booking form</h3>
+              <p>
+                Tell us who you are and what you’re looking for. For model submissions, include at least one link to digitals or a portfolio.
+              </p>
+              <form
+                class="form-grid"
+                onsubmit="handleSubmit(event)"
+              >
+                <div class="form-row">
+                  <label>
+                    Full name
+                    <input type="text" name="name" required />
+                  </label>
+                  <label>
+                    Email
+                    <input type="email" name="email" required />
+                  </label>
+                </div>
+                <div class="form-row">
+                  <label>
+                    I am a...
+                    <select name="type" required>
+                      <option value="">Select an option</option>
+                      <option value="model">Model / aspiring model</option>
+                      <option value="brand">Brand / agency / studio</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+                  <label>
+                    Location
+                    <input
+                      type="text"
+                      name="location"
+                      placeholder="City · Country"
+                    />
+                  </label>
+                </div>
+                <label>
+                  Links (portfolio, Instagram, website)
+                  <input
+                    type="text"
+                    name="links"
+                    placeholder="https://..."
+                  />
+                </label>
+                <label>
+                  Message
+                  <textarea
+                    name="message"
+                    placeholder="Share your project details or tell us about yourself as a model..."
+                    required
+                  ></textarea>
+                </label>
+                <div class="form-footer">
+                  <button class="btn btn-primary" type="submit">
+                    Send message
+                  </button>
+                  <div class="form-status" id="formStatus">
+                    This demo form doesn’t send yet — wire it to your email or CRM.
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="contact-info">
+              <div class="info-block">
+                <div class="info-label">Studios & online</div>
+                <div class="info-inline">
+                  <div class="info-value">
+                    New York · Los Angeles · Remote castings
+                  </div>
+                  <span class="helper">
+                    In-person castings by appointment only.
+                  </span>
+                </div>
+              </div>
+              <div class="info-block">
+                <div class="info-label">Contact</div>
+                <div class="info-inline">
+                  <div class="info-value">hello@blossomstudios.agency</div>
+                  <div class="info-value">+1 (000) 000-0000</div>
+                  <div class="social-row">
+                    <span class="social-pill">@blossomstudios.agency</span>
+                    <span class="social-pill">Instagram</span>
+                    <span class="social-pill">TikTok</span>
+                  </div>
+                </div>
+              </div>
+              <div class="info-block">
+                <div class="info-label">For models</div>
+                <p class="helper" style="margin: 0;">
+                  You must be at least 16 years old to apply. If you’re under 18, a parent or guardian must be involved in communication and bookings.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Blossom Studios. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#talent">Talent</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scrolling helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        const headerOffset = 80;
+        const rect = el.getBoundingClientRect();
+        const offsetTop = rect.top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+    }
+
+    // Mobile nav toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("mobile-nav-open");
+    });
+
+    // Demo form handler
+    function handleSubmit(event) {
+      event.preventDefault();
+      const status = document.getElementById("formStatus");
+      status.textContent =
+        "Thank you for your message. Replace this with your own form handler to receive submissions.";
+    }
+
+    // Year in footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
