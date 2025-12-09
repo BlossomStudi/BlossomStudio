@@ -611,99 +611,146 @@
 
     /* Talent grid */
 
-    .models-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.25rem;
-    }
+<div class="models-grid">
+  <!-- Amara -->
+  <article class="model-card">
+    <div class="model-photo slider" data-model="amara">
+      <div class="slider-inner">
+        <img src="amara1-min.jpg" alt="Amara 1" class="active" />
+        <img src="amara2-min.jpg" alt="Amara 2" />
+        <img src="amara3-min.jpg" alt="Amara 3" />
+        <img src="amara4-min.jpg" alt="Amara 4" />
+        <img src="amara5-min.png" alt="Amara 5" />
+      </div>
+      <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+      <div class="slider-dots">
+        <button class="slider-dot active" type="button" data-index="0"></button>
+        <button class="slider-dot" type="button" data-index="1"></button>
+        <button class="slider-dot" type="button" data-index="2"></button>
+        <button class="slider-dot" type="button" data-index="3"></button>
+        <button class="slider-dot" type="button" data-index="4"></button>
+      </div>
+      <span class="model-label">Primary board</span>
+    </div>
+    <div class="model-body">
+      <div class="model-name">Amara</div>
+      <div class="model-meta">
+        <span class="model-city">Age 21</span>
+        <span class="model-measures">Blossom Studios talent</span>
+      </div>
+      <div class="model-tags">
+        <span class="model-tag">Runway</span>
+        <span class="model-tag">Editorial</span>
+      </div>
+    </div>
+  </article>
 
-    .model-card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 12px 28px rgba(15, 14, 23, 0.06);
-      display: flex;
-      flex-direction: column;
-    }
+  <!-- Eyta -->
+  <article class="model-card">
+    <div class="model-photo slider" data-model="eyta">
+      <div class="slider-inner">
+        <img src="eyta1-min.jpg" alt="Eyta 1" class="active" />
+        <img src="eyta2-min.jpg" alt="Eyta 2" />
+        <img src="eyta3-min.jpg" alt="Eyta 3" />
+        <img src="eyta4-min.jpg" alt="Eyta 4" />
+        <img src="eyta5-min.jpg" alt="Eyta 5" />
+      </div>
+      <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+      <div class="slider-dots">
+        <button class="slider-dot active" type="button" data-index="0"></button>
+        <button class="slider-dot" type="button" data-index="1"></button>
+        <button class="slider-dot" type="button" data-index="2"></button>
+        <button class="slider-dot" type="button" data-index="3"></button>
+        <button class="slider-dot" type="button" data-index="4"></button>
+      </div>
+      <span class="model-label">Primary board</span>
+    </div>
+    <div class="model-body">
+      <div class="model-name">Eyta</div>
+      <div class="model-meta">
+        <span class="model-city">Age 24</span>
+        <span class="model-measures">Blossom Studios talent</span>
+      </div>
+      <div class="model-tags">
+        <span class="model-tag">Commercial</span>
+        <span class="model-tag">Lifestyle</span>
+      </div>
+    </div>
+  </article>
 
-    .model-photo {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 3 / 4;
-    }
+  <!-- Jenny -->
+  <article class="model-card">
+    <div class="model-photo slider" data-model="jenny">
+      <div class="slider-inner">
+        <img src="Jenny1-min.jpg" alt="Jenny 1" class="active" />
+        <img src="Jenny2-min.jpg" alt="Jenny 2" />
+        <img src="Jenny3-min.jpg" alt="Jenny 3" />
+        <img src="Jenny4-min.jpg" alt="Jenny 4" />
+        <img src="Jenny5-min.jpg" alt="Jenny 5" />
+      </div>
+      <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+      <div class="slider-dots">
+        <button class="slider-dot active" type="button" data-index="0"></button>
+        <button class="slider-dot" type="button" data-index="1"></button>
+        <button class="slider-dot" type="button" data-index="2"></button>
+        <button class="slider-dot" type="button" data-index="3"></button>
+        <button class="slider-dot" type="button" data-index="4"></button>
+      </div>
+      <span class="model-label">Primary board</span>
+    </div>
+    <div class="model-body">
+      <div class="model-name">Jenny</div>
+      <div class="model-meta">
+        <span class="model-city">Age 22</span>
+        <span class="model-measures">Blossom Studios talent</span>
+      </div>
+      <div class="model-tags">
+        <span class="model-tag">Beauty</span>
+        <span class="model-tag">Digital</span>
+      </div>
+    </div>
+  </article>
 
-    .model-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 220ms ease-out;
-    }
+  <!-- Kat -->
+  <article class="model-card">
+    <div class="model-photo slider" data-model="kat">
+      <div class="slider-inner">
+        <img src="kat1-min.jpg" alt="Kat 1" class="active" />
+        <img src="kat2-min.jpg" alt="Kat 2" />
+        <img src="kat3-min.jpg" alt="Kat 3" />
+        <img src="kat4-min.jpg" alt="Kat 4" />
+        <img src="kat5-min.jpg" alt="Kat 5" />
+        <img src="kat6-min.jpg" alt="Kat 6" />
+      </div>
+      <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+      <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+      <div class="slider-dots">
+        <button class="slider-dot active" type="button" data-index="0"></button>
+        <button class="slider-dot" type="button" data-index="1"></button>
+        <button class="slider-dot" type="button" data-index="2"></button>
+        <button class="slider-dot" type="button" data-index="3"></button>
+        <button class="slider-dot" type="button" data-index="4"></button>
+        <button class="slider-dot" type="button" data-index="5"></button>
+      </div>
+      <span class="model-label">Primary board</span>
+    </div>
+    <div class="model-body">
+      <div class="model-name">Kat</div>
+      <div class="model-meta">
+        <span class="model-city">Age 26</span>
+        <span class="model-measures">Blossom Studios talent</span>
+      </div>
+      <div class="model-tags">
+        <span class="model-tag">Campaigns</span>
+        <span class="model-tag">Editorial</span>
+      </div>
+    </div>
+  </article>
+</div>
 
-    .model-card:hover .model-photo img {
-      transform: scale(1.05);
-    }
-
-    .model-label {
-      position: absolute;
-      inset: 0.7rem auto auto 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: var(--radius-full);
-      font-size: 0.7rem;
-      background: rgba(244, 123, 168, 0.92);
-      color: #fff;
-      font-weight: 500;
-      z-index: 3;
-    }
-
-    .model-body {
-      padding: 0.7rem 0.8rem 0.75rem;
-      display: grid;
-      gap: 0.25rem;
-      font-size: 0.82rem;
-    }
-
-    .model-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .model-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 0.15rem;
-    }
-
-    .model-city {
-      color: var(--muted);
-      font-size: 0.78rem;
-    }
-
-    .model-measures {
-      font-size: 0.78rem;
-      color: #7c2b53;
-      padding: 0.18rem 0.5rem;
-      border-radius: 999px;
-      background: #fff4fb;
-      border: 1px solid #ffd3ec;
-      font-weight: 500;
-    }
-
-    .model-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-top: 0.2rem;
-    }
-
-    .model-tag {
-      font-size: 0.72rem;
-      padding: 0.12rem 0.45rem;
-      border-radius: 999px;
-      background: #f4f0ff;
-      color: #4a3388;
     }
 
     /* Talent sliders */
