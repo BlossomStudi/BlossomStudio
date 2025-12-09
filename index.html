@@ -261,7 +261,7 @@
       font-size: clamp(2.3rem, 4vw, 3.2rem);
       line-height: 1.04;
       letter-spacing: -0.04em;
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.6rem;
     }
 
     .hero-title span.accent {
@@ -269,6 +269,15 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #f06292;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     .hero-subtitle {
@@ -603,96 +612,175 @@
     /* Talent grid */
 
     .models-grid {
-      <div class="models-grid">
-  <!-- Amara -->
-  <article class="model-card">
-    <div class="model-photo">
-      <img
-        src="YOUR_AMARA_IMAGE_URL_HERE"
-        alt="Model Amara"
-      />
-      <span class="model-label">Primary board</span>
-    </div>
-    <div class="model-body">
-      <div class="model-name">Amara</div>
-      <div class="model-meta">
-        <span class="model-city">Age 21</span>
-        <span class="model-measures">Blossom Studios talent</span>
-      </div>
-      <div class="model-tags">
-        <span class="model-tag">Runway</span>
-        <span class="model-tag">Editorial</span>
-      </div>
-    </div>
-  </article>
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
 
-  <!-- Eyta -->
-  <article class="model-card">
-    <div class="model-photo">
-      <img
-        src="YOUR_EYTA_IMAGE_URL_HERE"
-        alt="Model Eyta"
-      />
-      <span class="model-label">Primary board</span>
-    </div>
-    <div class="model-body">
-      <div class="model-name">Eyta</div>
-      <div class="model-meta">
-        <span class="model-city">Age 24</span>
-        <span class="model-measures">Blossom Studios talent</span>
-      </div>
-      <div class="model-tags">
-        <span class="model-tag">Commercial</span>
-        <span class="model-tag">Lifestyle</span>
-      </div>
-    </div>
-  </article>
+    .model-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(15, 14, 23, 0.06);
+      display: flex;
+      flex-direction: column;
+    }
 
-  <!-- Jenny -->
-  <article class="model-card">
-    <div class="model-photo">
-      <img
-        src="YOUR_JENNY_IMAGE_URL_HERE"
-        alt="Model Jenny"
-      />
-      <span class="model-label">Primary board</span>
-    </div>
-    <div class="model-body">
-      <div class="model-name">Jenny</div>
-      <div class="model-meta">
-        <span class="model-city">Age 22</span>
-        <span class="model-measures">Blossom Studios talent</span>
-      </div>
-      <div class="model-tags">
-        <span class="model-tag">Beauty</span>
-        <span class="model-tag">Digital</span>
-      </div>
-    </div>
-  </article>
+    .model-photo {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+    }
 
-  <!-- Kat -->
-  <article class="model-card">
-    <div class="model-photo">
-      <img
-        src="YOUR_KAT_IMAGE_URL_HERE"
-        alt="Model Kat"
-      />
-      <span class="model-label">Primary board</span>
-    </div>
-    <div class="model-body">
-      <div class="model-name">Kat</div>
-      <div class="model-meta">
-        <span class="model-city">Age 26</span>
-        <span class="model-measures">Blossom Studios talent</span>
-      </div>
-      <div class="model-tags">
-        <span class="model-tag">Campaigns</span>
-        <span class="model-tag">Editorial</span>
-      </div>
-    </div>
-  </article>
-</div>
+    .model-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 220ms ease-out;
+    }
 
+    .model-card:hover .model-photo img {
+      transform: scale(1.05);
+    }
+
+    .model-label {
+      position: absolute;
+      inset: 0.7rem auto auto 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      background: rgba(244, 123, 168, 0.92);
+      color: #fff;
+      font-weight: 500;
+      z-index: 3;
+    }
+
+    .model-body {
+      padding: 0.7rem 0.8rem 0.75rem;
+      display: grid;
+      gap: 0.25rem;
+      font-size: 0.82rem;
+    }
+
+    .model-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .model-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.15rem;
+    }
+
+    .model-city {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .model-measures {
+      font-size: 0.78rem;
+      color: #7c2b53;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: #fff4fb;
+      border: 1px solid #ffd3ec;
+      font-weight: 500;
+    }
+
+    .model-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.2rem;
+    }
+
+    .model-tag {
+      font-size: 0.72rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 999px;
+      background: #f4f0ff;
+      color: #4a3388;
+    }
+
+    /* Talent sliders */
+    .model-photo.slider {
+      position: relative;
+    }
+
+    .slider-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slider-inner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 220ms ease-out;
+    }
+
+    .slider-inner img.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      z-index: 3;
+    }
+
+    .slider-btn.prev {
+      left: 6px;
+    }
+
+    .slider-btn.next {
+      right: 6px;
+    }
+
+    .slider-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 6px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+      z-index: 3;
+    }
+
+    .slider-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      border: none;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+    }
+
+    .slider-dot.active {
+      background: #ffffff;
     }
 
     /* Services */
@@ -1063,6 +1151,9 @@
             <h1 class="hero-title">
               Where <span class="accent">new faces</span> blossom into timeless brands.
             </h1>
+            <p class="hero-tagline">
+              Uniting Chicano culture one model at a time.
+            </p>
             <p class="hero-subtitle">
               Blossom Studios is a boutique agency championing diverse talent for fashion, beauty, and commercial work — from fresh faces to established names.
             </p>
@@ -1080,7 +1171,7 @@
               <span>Portfolio or social link recommended</span>
             </div>
             <div class="hero-meta">
-              <span>NYC · LA · Remote castings</span>
+              <span>Salt Lake City · Mexico</span>
               <span>Runway · Editorial · Commercial</span>
               <span>Inclusive & story-driven representation</span>
             </div>
@@ -1196,87 +1287,140 @@
             </p>
           </div>
           <div class="models-grid">
-            <!-- Model 1 -->
+            <!-- Amara -->
             <article class="model-card">
-              <div class="model-photo">
-                <img
-                  src="https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Model Amara"
-                />
-                <span class="model-label">Editorial · Runway</span>
+              <div class="model-photo slider" data-model="amara">
+                <div class="slider-inner">
+                  <img src="images/amara1-min.jpg" alt="Amara 1" class="active" />
+                  <img src="images/amara2-min.jpg" alt="Amara 2" />
+                  <img src="images/amara3-min.jpg" alt="Amara 3" />
+                  <img src="images/amara4-min.jpg" alt="Amara 4" />
+                  <img src="images/amara5-min.png" alt="Amara 5" />
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+                <div class="slider-dots">
+                  <button class="slider-dot active" type="button" data-index="0"></button>
+                  <button class="slider-dot" type="button" data-index="1"></button>
+                  <button class="slider-dot" type="button" data-index="2"></button>
+                  <button class="slider-dot" type="button" data-index="3"></button>
+                  <button class="slider-dot" type="button" data-index="4"></button>
+                </div>
+                <span class="model-label">Primary board</span>
               </div>
               <div class="model-body">
                 <div class="model-name">Amara</div>
                 <div class="model-meta">
-                  <span class="model-city">Based in NYC</span>
-                  <span class="model-measures">5'9" · 32 · 24 · 35</span>
-                </div>
-                <div class="model-tags">
-                  <span class="model-tag">Beauty</span>
-                  <span class="model-tag">High fashion</span>
-                </div>
-              </div>
-            </article>
-            <!-- Model 2 -->
-            <article class="model-card">
-              <div class="model-photo">
-                <img
-                  src="https://images.pexels.com/photos/977628/pexels-photo-977628.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Model Luca"
-                />
-                <span class="model-label">Commercial · Lifestyle</span>
-              </div>
-              <div class="model-body">
-                <div class="model-name">Luca</div>
-                <div class="model-meta">
-                  <span class="model-city">Based in Los Angeles</span>
-                  <span class="model-measures">6'1" · 38R</span>
-                </div>
-                <div class="model-tags">
-                  <span class="model-tag">Lifestyle</span>
-                  <span class="model-tag">Campaigns</span>
-                </div>
-              </div>
-            </article>
-            <!-- Model 3 -->
-            <article class="model-card">
-              <div class="model-photo">
-                <img
-                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Model Sora"
-                />
-                <span class="model-label">Runway · Editorial</span>
-              </div>
-              <div class="model-body">
-                <div class="model-name">Sora</div>
-                <div class="model-meta">
-                  <span class="model-city">Based in Seoul / Paris</span>
-                  <span class="model-measures">5'10" · 30 · 23 · 34</span>
+                  <span class="model-city">Age 21</span>
+                  <span class="model-measures">Blossom Studios talent</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Runway</span>
-                  <span class="model-tag">Avant-garde</span>
+                  <span class="model-tag">Editorial</span>
                 </div>
               </div>
             </article>
-            <!-- Model 4 -->
+
+            <!-- Eyta -->
             <article class="model-card">
-              <div class="model-photo">
-                <img
-                  src="https://images.pexels.com/photos/4664520/pexels-photo-4664520.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt="Model Nia"
-                />
-                <span class="model-label">Beauty · Digital</span>
+              <div class="model-photo slider" data-model="eyta">
+                <div class="slider-inner">
+                  <img src="images/eyta1-min.jpg" alt="Eyta 1" class="active" />
+                  <img src="images/eyta2-min.jpg" alt="Eyta 2" />
+                  <img src="images/eyta3-min.jpg" alt="Eyta 3" />
+                  <img src="images/eyta4-min.jpg" alt="Eyta 4" />
+                  <img src="images/eyta5-min.jpg" alt="Eyta 5" />
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+                <div class="slider-dots">
+                  <button class="slider-dot active" type="button" data-index="0"></button>
+                  <button class="slider-dot" type="button" data-index="1"></button>
+                  <button class="slider-dot" type="button" data-index="2"></button>
+                  <button class="slider-dot" type="button" data-index="3"></button>
+                  <button class="slider-dot" type="button" data-index="4"></button>
+                </div>
+                <span class="model-label">Primary board</span>
               </div>
               <div class="model-body">
-                <div class="model-name">Nia</div>
+                <div class="model-name">Eyta</div>
                 <div class="model-meta">
-                  <span class="model-city">Based in London</span>
-                  <span class="model-measures">5'7" · 34 · 26 · 37</span>
+                  <span class="model-city">Age 24</span>
+                  <span class="model-measures">Blossom Studios talent</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Commercial</span>
+                  <span class="model-tag">Lifestyle</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Jenny -->
+            <article class="model-card">
+              <div class="model-photo slider" data-model="jenny">
+                <div class="slider-inner">
+                  <img src="images/Jenny1-min.jpg" alt="Jenny 1" class="active" />
+                  <img src="images/Jenny2-min.jpg" alt="Jenny 2" />
+                  <img src="images/Jenny3-min.jpg" alt="Jenny 3" />
+                  <img src="images/Jenny4-min.jpg" alt="Jenny 4" />
+                  <img src="images/Jenny5-min.jpg" alt="Jenny 5" />
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+                <div class="slider-dots">
+                  <button class="slider-dot active" type="button" data-index="0"></button>
+                  <button class="slider-dot" type="button" data-index="1"></button>
+                  <button class="slider-dot" type="button" data-index="2"></button>
+                  <button class="slider-dot" type="button" data-index="3"></button>
+                  <button class="slider-dot" type="button" data-index="4"></button>
+                </div>
+                <span class="model-label">Primary board</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Jenny</div>
+                <div class="model-meta">
+                  <span class="model-city">Age 22</span>
+                  <span class="model-measures">Blossom Studios talent</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Beauty</span>
-                  <span class="model-tag">Creator</span>
+                  <span class="model-tag">Digital</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Kat -->
+            <article class="model-card">
+              <div class="model-photo slider" data-model="kat">
+                <div class="slider-inner">
+                  <img src="images/kat1-min.jpg" alt="Kat 1" class="active" />
+                  <img src="images/kat2-min.jpg" alt="Kat 2" />
+                  <img src="images/kat3-min.jpg" alt="Kat 3" />
+                  <img src="images/kat4-min.jpg" alt="Kat 4" />
+                  <img src="images/kat5-min.jpg" alt="Kat 5" />
+                  <img src="images/kat6-min.jpg" alt="Kat 6" />
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Previous photo">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Next photo">›</button>
+                <div class="slider-dots">
+                  <button class="slider-dot active" type="button" data-index="0"></button>
+                  <button class="slider-dot" type="button" data-index="1"></button>
+                  <button class="slider-dot" type="button" data-index="2"></button>
+                  <button class="slider-dot" type="button" data-index="3"></button>
+                  <button class="slider-dot" type="button" data-index="4"></button>
+                  <button class="slider-dot" type="button" data-index="5"></button>
+                </div>
+                <span class="model-label">Primary board</span>
+              </div>
+              <div class="model-body">
+                <div class="model-name">Kat</div>
+                <div class="model-meta">
+                  <span class="model-city">Age 26</span>
+                  <span class="model-measures">Blossom Studios talent</span>
+                </div>
+                <div class="model-tags">
+                  <span class="model-tag">Campaigns</span>
+                  <span class="model-tag">Editorial</span>
                 </div>
               </div>
             </article>
@@ -1413,7 +1557,7 @@
                 <div class="info-label">Studios & online</div>
                 <div class="info-inline">
                   <div class="info-value">
-                    New York · Los Angeles · Remote castings
+                    Salt Lake City · Mexico · More locations coming soon
                   </div>
                   <span class="helper">
                     In-person castings by appointment only.
@@ -1474,9 +1618,11 @@
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("mobile-nav-open");
-    });
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("mobile-nav-open");
+      });
+    }
 
     // Demo form handler
     function handleSubmit(event) {
@@ -1489,6 +1635,57 @@
     // Year in footer
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+    // Talent sliders
+    function initTalentSliders() {
+      const sliders = document.querySelectorAll(".model-photo.slider");
+
+      sliders.forEach((slider) => {
+        const inner = slider.querySelector(".slider-inner");
+        const images = Array.from(inner.querySelectorAll("img"));
+        const dots = Array.from(slider.querySelectorAll(".slider-dot"));
+        const prevBtn = slider.querySelector(".slider-btn.prev");
+        const nextBtn = slider.querySelector(".slider-btn.next");
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+          if (!images.length) return;
+          currentIndex = (index + images.length) % images.length;
+
+          images.forEach((img, i) => {
+            img.classList.toggle("active", i === currentIndex);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === currentIndex);
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            showSlide(currentIndex - 1);
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            showSlide(currentIndex + 1);
+          });
+        }
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            const idx = Number(dot.getAttribute("data-index"));
+            showSlide(idx);
+          });
+        });
+
+        // Ensure first slide is visible
+        showSlide(0);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initTalentSliders);
   </script>
 </body>
 </html>
