@@ -10,17 +10,21 @@
   />
   <style>
     :root {
-      --primary: #f47ba8;
-      --primary-soft: #ffe4ee;
-      --bg: #ffffff;
-      --text: #1d1b21;
-      --muted: #6e6b78;
-      --border: #f0eef4;
-      --shadow-soft: 0 18px 40px rgba(15, 14, 23, 0.12);
-      --radius-lg: 20px;
+      --bg: #f4f1ea;
+      --bg-alt: #f0ece3;
+      --bg-deep: #191716;
+      --card: #f8f5ef;
+      --text: #1f1c19;
+      --muted: #6c645c;
+      --accent: #8b5e3c; /* leather / tobacco brown */
+      --accent-soft: #c5a786;
+      --border: #d6cec2;
+      --radius-md: 10px;
+      --radius-lg: 14px;
       --radius-full: 999px;
+      --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.06);
+      --max-width: 1080px;
       --transition-fast: 180ms ease-out;
-      --max-width: 1120px;
     }
 
     * {
@@ -30,9 +34,9 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: #f9f6fb;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -60,76 +64,60 @@
       width: 100%;
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.25rem;
     }
+
+    /* Header & nav */
 
     header {
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(249, 246, 251, 0.9);
-      border-bottom: 1px solid rgba(240, 238, 244, 0.8);
+      backdrop-filter: blur(12px);
+      background: rgba(244, 241, 234, 0.9);
+      border-bottom: 1px solid rgba(214, 206, 194, 0.85);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 0;
+      padding: 0.9rem 0;
       gap: 1rem;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 20%, #ffeef6, #f47ba8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.05rem;
-      box-shadow: 0 8px 24px rgba(244, 123, 168, 0.45);
-    }
-
-    .logo-text {
+    .brand {
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
     }
 
-    .logo-text span:first-child {
-      font-weight: 650;
-      letter-spacing: 0.03em;
-      font-size: 0.95rem;
+    .brand-name {
+      font-family: "Georgia", "Times New Roman", serif;
+      letter-spacing: 0.18em;
+      font-size: 0.9rem;
       text-transform: uppercase;
     }
 
-    .logo-text span:last-child {
-      font-size: 0.75rem;
+    .brand-tagline {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--muted);
-      letter-spacing: 0.12em;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      font-size: 0.95rem;
+      gap: 1.6rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
     .nav-links a {
       position: relative;
-      padding: 0.25rem 0;
+      padding-bottom: 0.1rem;
       color: var(--muted);
       transition: color var(--transition-fast);
     }
@@ -140,9 +128,8 @@
       left: 0;
       bottom: 0;
       width: 0;
-      height: 1.5px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #f47ba8, #f3a6c4);
+      height: 1px;
+      background: var(--text);
       transition: width var(--transition-fast);
     }
 
@@ -157,83 +144,85 @@
     .nav-cta {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .btn {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.4rem;
-      border-radius: var(--radius-full);
-      border: 1px solid transparent;
-      padding: 0.55rem 1.05rem;
-      font-size: 0.9rem;
-      font-weight: 550;
-      cursor: pointer;
-      background: #fff;
+      gap: 0.25rem;
       color: var(--text);
-      box-shadow: 0 8px 18px rgba(15, 14, 23, 0.06);
       transition:
         background var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
+        color var(--transition-fast),
         border-color var(--transition-fast),
-        color var(--transition-fast);
+        transform var(--transition-fast);
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 20% 0, #ffe4ee, #f47ba8);
-      color: #211319;
-      border-color: rgba(244, 123, 168, 0.5);
-      box-shadow: 0 12px 30px rgba(244, 123, 168, 0.45);
+      background: #1f1c19;
+      color: #f4f1ea;
+      border-color: #1f1c19;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 36px rgba(244, 123, 168, 0.55);
+      background: #13110f;
+      border-color: #13110f;
     }
 
     .btn-outline {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(210, 206, 220, 0.9);
+      background: transparent;
     }
 
     .btn-outline:hover {
-      transform: translateY(-1px);
-      border-color: var(--primary);
-      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.08);
+      background: #e1d9cb;
+      border-color: #c2b6a3;
     }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.15rem 0.6rem;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(244, 123, 168, 0.45);
-      background: rgba(255, 244, 250, 0.9);
-      font-size: 0.75rem;
-      color: #bf416e;
-      font-weight: 500;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #30c18e;
-      box-shadow: 0 0 0 6px rgba(48, 193, 142, 0.26);
-    }
-
-    /* Mobile nav button */
 
     .menu-toggle {
       display: none;
       border: none;
       background: transparent;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mobile-nav-open .nav-links,
+      .mobile-nav-open .nav-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-top: 0.6rem;
+      }
+
+      .nav-links {
+        gap: 0.7rem;
+      }
     }
 
     /* Hero */
@@ -243,83 +232,64 @@
     }
 
     .hero {
-      padding: 3.5rem 0 3.25rem;
+      padding: 3.3rem 0 3rem;
+      border-bottom: 1px solid var(--border);
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
       gap: 2.5rem;
       align-items: center;
     }
 
-    .hero-eyebrow {
-      margin-bottom: 0.7rem;
+    .hero-kicker {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
     }
 
     .hero-title {
-      font-size: clamp(2.3rem, 4vw, 3.2rem);
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.6rem;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4vw, 2.7rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
     }
 
-    .hero-title span.accent {
-      background-image: linear-gradient(120deg, #f47ba8, #f9a8d4);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-title span {
+      display: block;
     }
 
     .hero-tagline {
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #f06292;
-      margin-bottom: 0.9rem;
-      letter-spacing: 0.03em;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
     }
 
     .hero-subtitle {
-      max-width: 32rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      font-size: 0.98rem;
+      max-width: 30rem;
       margin-bottom: 1.6rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.7rem;
       align-items: center;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-note {
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-note strong {
-      color: var(--text);
-      font-weight: 550;
-    }
-
-    .hero-note-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: var(--border);
+      margin-bottom: 1.2rem;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.1rem;
-      margin-top: 0.85rem;
+      gap: 1rem;
       font-size: 0.78rem;
       color: var(--muted);
     }
@@ -327,386 +297,295 @@
     .hero-meta span {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
     .hero-meta span::before {
       content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(216, 178, 205, 0.7);
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      border: 1px solid #bba993;
     }
 
     .hero-media {
       position: relative;
     }
 
-    .hero-card {
-      border-radius: 30px;
+    .hero-frame {
+      border-radius: 0;
       overflow: hidden;
+      background: #141110;
       box-shadow: var(--shadow-soft);
-      background: radial-gradient(
-          circle at 0 0,
-          rgba(255, 247, 252, 0.95),
-          transparent 58%
-        ),
-        #131018 url("https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg?auto=compress&cs=tinysrgb&w=1200")
-          center/cover no-repeat;
-      min-height: 320px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 1.25rem 1.3rem;
-      color: #fff;
+      border: 1px solid #26211f;
+    }
+
+    .hero-image {
       position: relative;
-      isolation: isolate;
+      aspect-ratio: 4 / 5;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(20, 17, 16, 0.6),
+          rgba(20, 17, 16, 0.6)
+        ),
+        url("https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg?auto=compress&cs=tinysrgb&w=1200")
+          center/cover no-repeat;
+      filter: grayscale(100%);
     }
 
-    .hero-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(19, 16, 24, 0.25),
-        rgba(19, 16, 24, 0.9)
-      );
-      z-index: -1;
-    }
-
-    .hero-card-content {
-      max-width: 90%;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-full);
-      background: rgba(13, 241, 169, 0.14);
-      border: 0.5px solid rgba(199, 255, 229, 0.65);
-      font-size: 0.7rem;
-      font-weight: 500;
-      margin-bottom: 0.45rem;
-    }
-
-    .hero-tag-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #0df1a9;
-    }
-
-    .hero-card h2 {
-      font-size: 1.25rem;
-      margin-bottom: 0.2rem;
-      letter-spacing: 0.03em;
-    }
-
-    .hero-card p {
-      font-size: 0.85rem;
-      opacity: 0.92;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-card-meta {
+    .hero-caption {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.78rem;
-      opacity: 0.96;
-    }
-
-    .hero-chip-row {
-      position: absolute;
-      inset: auto auto 14px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .hero-chip {
-      background: rgba(255, 255, 255, 0.96);
-      color: #1a141c;
-      border-radius: var(--radius-full);
-      padding: 0.25rem 0.6rem;
-      font-size: 0.72rem;
-      display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      box-shadow: 0 8px 26px rgba(9, 7, 15, 0.55);
-    }
-
-    .hero-chip img {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      object-fit: cover;
-    }
-
-    .hero-floating-card {
-      position: absolute;
-      top: 1.2rem;
-      right: 0.8rem;
-      background: #fff;
-      border-radius: 18px;
-      padding: 0.7rem 0.75rem;
-      box-shadow: 0 14px 40px rgba(12, 10, 18, 0.45);
-      font-size: 0.7rem;
-      min-width: 150px;
-      display: grid;
-      gap: 0.1rem;
-      transform: translateY(0);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero-floating-card strong {
+      padding: 0.8rem 1rem;
       font-size: 0.78rem;
+      color: #e7e1d7;
+      border-top: 1px solid #26211f;
+      background: #181513;
     }
 
-    .hero-floating-card span {
-      color: #7a7583;
+    .hero-caption span:first-child {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-top: 0.3rem;
+    .hero-caption span:last-child {
+      color: #a89a82;
     }
 
-    .pill {
-      border-radius: 999px;
-      padding: 0.1rem 0.55rem;
-      border: 1px solid #f4e3ff;
-      background: #fdf8ff;
-      font-size: 0.67rem;
-      color: #7f2a56;
-      font-weight: 500;
-    }
-
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
       }
-      50% {
-        transform: translateY(-8px);
+      .hero-media {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 2.5rem;
       }
     }
 
     /* Sections */
 
     section {
-      padding: 2.5rem 0 2.75rem;
-    }
-
-    section:nth-of-type(odd) {
-      background: #fefbff;
-    }
-
-    section:nth-of-type(even) {
-      background: #f8f3fb;
+      padding: 2.6rem 0 2.7rem;
     }
 
     .section-header {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      align-items: baseline;
+      align-items: flex-end;
       justify-content: space-between;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.7rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem;
     }
 
     .section-title {
-      font-size: 1.4rem;
-      letter-spacing: -0.02em;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     .section-subtitle {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      max-width: 24rem;
+      max-width: 23rem;
     }
 
     /* About */
 
-    .about-grid {
+    #about {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-layout {
       display: grid;
-      gap: 1.8rem;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 2.2rem;
       align-items: flex-start;
     }
 
     .about-text {
-      font-size: 0.94rem;
+      font-size: 0.9rem;
       color: var(--muted);
       display: grid;
-      gap: 0.9rem;
+      gap: 0.8rem;
     }
 
-    .about-text strong {
+    .about-highlight {
       color: var(--text);
+      font-weight: 500;
     }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.85rem;
-      margin-top: 0.3rem;
-    }
-
-    .stat-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 0.8rem 0.85rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.06);
-    }
-
-    .stat-value {
-      font-weight: 650;
-      font-size: 1.1rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
+    .about-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.3rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--muted);
     }
 
     .about-card {
-      background: #fff;
-      border-radius: 20px;
+      background: var(--card);
+      border-radius: var(--radius-lg);
       padding: 1.1rem 1.1rem 1rem;
       border: 1px solid var(--border);
-      box-shadow: 0 14px 36px rgba(15, 14, 23, 0.08);
-      display: grid;
-      gap: 0.7rem;
+      box-shadow: var(--shadow-soft);
       font-size: 0.85rem;
+      display: grid;
+      gap: 0.65rem;
     }
 
     .about-card-title {
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-family: "Georgia", "Times New Roman", serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
     }
 
-    .about-pill-row {
+    .about-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
     }
 
     .about-pill {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.7rem;
       border-radius: 999px;
-      background: #fef2f8;
-      border: 1px solid rgba(244, 123, 168, 0.35);
-      color: #c93b71;
-      font-weight: 500;
+      border: 1px solid #c9bcaa;
+      padding: 0.12rem 0.55rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #5e5142;
+      background: #efe5d5;
     }
 
-    /* Talent grid */
+    /* Talent */
+
+    #talent {
+      background: var(--bg);
+    }
 
     .models-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.25rem;
+      gap: 1.2rem;
     }
 
     .model-card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
+      background: var(--card);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      box-shadow: 0 12px 28px rgba(15, 14, 23, 0.06);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-soft);
     }
 
     .model-photo {
       position: relative;
-      overflow: hidden;
       aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #111;
     }
 
     .model-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 220ms ease-out;
+      filter: grayscale(100%);
+      transition:
+        transform 220ms ease-out,
+        filter 220ms ease-out,
+        opacity 220ms ease-out;
     }
 
-    .model-card:hover .model-photo img {
-      transform: scale(1.05);
+    .model-card:hover .model-photo img.active {
+      transform: scale(1.02);
+      filter: grayscale(0%);
     }
 
     .model-label {
       position: absolute;
-      inset: 0.7rem auto auto 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: var(--radius-full);
-      font-size: 0.7rem;
-      background: rgba(244, 123, 168, 0.92);
-      color: #fff;
-      font-weight: 500;
+      inset: 0.7rem auto auto 0.8rem;
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: rgba(15, 12, 10, 0.84);
+      color: #f4f1ea;
+      border: 1px solid rgba(244, 241, 234, 0.7);
       z-index: 3;
     }
 
     .model-body {
-      padding: 0.7rem 0.8rem 0.75rem;
+      padding: 0.75rem 0.8rem 0.8rem;
+      font-size: 0.82rem;
       display: grid;
       gap: 0.25rem;
-      font-size: 0.82rem;
     }
 
     .model-name {
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.98rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .model-meta {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 0.5rem;
-      margin-top: 0.15rem;
-    }
-
-    .model-city {
+      margin-top: 0.2rem;
+      font-size: 0.76rem;
       color: var(--muted);
-      font-size: 0.78rem;
     }
 
     .model-measures {
-      font-size: 0.78rem;
-      color: #7c2b53;
-      padding: 0.18rem 0.5rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
       border-radius: 999px;
-      background: #fff4fb;
-      border: 1px solid #ffd3ec;
-      font-weight: 500;
+      border: 1px solid var(--border);
+      padding: 0.12rem 0.55rem;
+      background: #efe5d7;
+      color: #5b4c3b;
     }
 
     .model-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-top: 0.2rem;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
     }
 
     .model-tag {
       font-size: 0.72rem;
-      padding: 0.12rem 0.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.12rem 0.4rem;
       border-radius: 999px;
-      background: #f4f0ff;
-      color: #4a3388;
+      border: 1px solid var(--border);
+      color: var(--muted);
     }
 
-    /* Talent sliders */
+    /* Sliders */
+
     .model-photo.slider {
       position: relative;
     }
@@ -725,6 +604,7 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 220ms ease-out;
+      filter: grayscale(100%);
     }
 
     .slider-inner img.active {
@@ -736,13 +616,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       border-radius: 999px;
-      border: none;
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      font-size: 1rem;
+      border: 1px solid rgba(244, 241, 234, 0.6);
+      background: rgba(12, 10, 9, 0.72);
+      color: #f4f1ea;
+      font-size: 0.9rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -752,17 +632,17 @@
     }
 
     .slider-btn.prev {
-      left: 6px;
+      left: 7px;
     }
 
     .slider-btn.next {
-      right: 6px;
+      right: 7px;
     }
 
     .slider-dots {
       position: absolute;
       left: 50%;
-      bottom: 6px;
+      bottom: 7px;
       transform: translateX(-50%);
       display: flex;
       gap: 4px;
@@ -770,133 +650,154 @@
     }
 
     .slider-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 999px;
       border: none;
       padding: 0;
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(250, 248, 244, 0.4);
       cursor: pointer;
     }
 
     .slider-dot.active {
-      background: #ffffff;
+      background: #f4f1ea;
+    }
+
+    /* Helper under talent */
+
+    .talent-helper {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      padding-top: 0.7rem;
     }
 
     /* Services */
 
+    #services {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
     .services-grid {
       display: grid;
-      gap: 1.1rem;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
     }
 
     .service-card {
-      background: #fff;
-      border-radius: 18px;
+      background: var(--card);
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
       padding: 1rem 1rem 0.9rem;
-      box-shadow: 0 12px 30px rgba(15, 14, 23, 0.06);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.86rem;
       display: grid;
       gap: 0.5rem;
-      font-size: 0.88rem;
-    }
-
-    .service-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 13px;
-      border: 1px solid rgba(244, 123, 168, 0.35);
-      background: radial-gradient(circle at 20% 0, #ffeef6, #f47ba8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.05rem;
-      color: #fff;
-      margin-bottom: 0.4rem;
     }
 
     .service-title {
-      font-weight: 600;
+      font-family: "Georgia", "Times New Roman", serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.82rem;
     }
 
     .service-footer {
-      margin-top: 0.4rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-size: 0.76rem;
       color: var(--muted);
+      margin-top: 0.3rem;
     }
 
     .service-chip {
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      background: #fdf2ff;
-      border: 1px solid #f7cfff;
-      color: #8a3862;
-      font-weight: 500;
       font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-radius: 999px;
+      padding: 0.12rem 0.45rem;
+      border: 1px solid var(--border);
+      background: #efe5d7;
+      color: #5b4c3b;
     }
 
     /* Contact */
 
+    #contact {
+      background: var(--bg);
+    }
+
     .contact-layout {
       display: grid;
-      gap: 1.8rem;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
       align-items: flex-start;
     }
 
     .contact-card {
-      background: #fff;
-      border-radius: 22px;
+      background: var(--card);
+      border-radius: var(--radius-lg);
       padding: 1.1rem 1.1rem 1rem;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
+      font-size: 0.85rem;
     }
 
     .contact-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
 
     .contact-card p {
-      font-size: 0.88rem;
       color: var(--muted);
+      font-size: 0.82rem;
       margin-bottom: 0.9rem;
     }
 
     .form-grid {
       display: grid;
-      gap: 0.8rem;
+      gap: 0.75rem;
     }
 
     .form-row {
       display: grid;
-      gap: 0.8rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
     }
 
     label {
-      font-size: 0.78rem;
-      font-weight: 550;
-      color: #4d4956;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #5d544a;
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.25rem;
     }
 
     input,
     select,
     textarea {
-      border-radius: 12px;
-      border: 1px solid rgba(213, 209, 222, 0.9);
-      padding: 0.55rem 0.65rem;
+      border-radius: var(--radius-md);
+      border: 1px solid #cbc1b1;
+      padding: 0.55rem 0.6rem;
       font-family: inherit;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       outline: none;
-      background: #fcfaff;
+      background: #f7f3ea;
       transition:
         border-color var(--transition-fast),
         box-shadow var(--transition-fast),
@@ -906,9 +807,9 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(244, 123, 168, 0.3);
-      background: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.35);
+      background: #fbf8f2;
     }
 
     textarea {
@@ -919,79 +820,83 @@
     .helper {
       font-size: 0.72rem;
       color: var(--muted);
-      margin-top: 0.15rem;
+      margin-top: 0.2rem;
     }
 
     .form-footer {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
       align-items: center;
       justify-content: space-between;
+      gap: 0.8rem;
       margin-top: 0.7rem;
     }
 
     .form-status {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--muted);
     }
 
     .contact-info {
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       color: var(--muted);
       display: grid;
-      gap: 0.65rem;
+      gap: 0.8rem;
     }
 
     .info-block {
-      background: #fff;
-      border-radius: 18px;
-      padding: 0.9rem 0.95rem;
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 0.9rem;
       border: 1px solid var(--border);
-      box-shadow: 0 10px 24px rgba(15, 14, 23, 0.06);
+      box-shadow: var(--shadow-soft);
     }
 
     .info-label {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #a29caf;
-      margin-bottom: 0.15rem;
+      letter-spacing: 0.18em;
+      color: #8a7b67;
+      margin-bottom: 0.25rem;
     }
 
     .info-value {
-      font-size: 0.9rem;
       color: var(--text);
+      font-size: 0.86rem;
     }
 
     .info-inline {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
+      gap: 0.25rem;
     }
 
     .social-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.4rem;
+      gap: 0.4rem;
+      margin-top: 0.3rem;
     }
 
     .social-pill {
-      font-size: 0.78rem;
-      padding: 0.18rem 0.6rem;
       border-radius: 999px;
-      border: 1px dashed rgba(184, 173, 213, 0.9);
-      background: #f9f5ff;
+      border: 1px solid var(--border);
+      padding: 0.12rem 0.55rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: #efe5d7;
+      color: #5b4c3b;
     }
 
     /* Footer */
 
     footer {
-      background: #0f0b13;
-      color: #f9f5ff;
-      padding: 1.5rem 0 1.4rem;
+      background: var(--bg-deep);
+      color: #e8e2d6;
+      padding: 1.4rem 0 1.3rem;
       margin-top: auto;
+      border-top: 1px solid #37302c;
     }
 
     .footer-inner {
@@ -999,15 +904,17 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.85rem;
-      font-size: 0.78rem;
-      color: #b3a7c8;
+      gap: 0.7rem;
+      font-size: 0.74rem;
+      color: #b8ad9c;
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     .footer-links a {
@@ -1016,89 +923,37 @@
 
     .footer-links a:hover {
       opacity: 1;
-      color: #fff;
+      color: #f4f1ea;
     }
 
-    /* Responsive */
-
     @media (max-width: 900px) {
-      .hero-inner,
-      .about-grid,
+      .about-layout,
       .contact-layout {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero-media {
-        order: -1;
-      }
-
-      .models-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .services-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      header {
-        border-bottom: 1px solid rgba(240, 238, 244, 0.95);
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .mobile-nav-open .nav-links,
-      .mobile-nav-open .nav-cta {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.65rem;
-        padding: 0.8rem 0 0.7rem;
-      }
-
-      .nav {
-        flex-wrap: wrap;
+      .models-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 640px) {
+      .services-grid,
       .models-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .about-stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .hero-card {
-        min-height: 260px;
-      }
-
-      .hero-floating-card {
-        display: none;
       }
 
       .form-row {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .hero {
-        padding-top: 2.5rem;
-      }
-
       section {
-        padding-top: 2rem;
-        padding-bottom: 2.1rem;
+        padding-top: 2.2rem;
+        padding-bottom: 2.2rem;
       }
     }
   </style>
@@ -1109,14 +964,11 @@
     <header>
       <div class="container">
         <nav class="nav" id="mainNav">
-          <div class="logo">
-            <div class="logo-mark">B</div>
-            <div class="logo-text">
-              <span>Blossom Studios</span>
-              <span>Modeling Agency</span>
-            </div>
+          <div class="brand">
+            <div class="brand-name">Blossom Studios</div>
+            <div class="brand-tagline">Model Management</div>
           </div>
-          <button class="menu-toggle" aria-label="Toggle navigation" id="menuToggle">
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
             ☰
           </button>
           <div class="nav-links">
@@ -1127,10 +979,10 @@
           </div>
           <div class="nav-cta">
             <button class="btn btn-outline" onclick="scrollToSection('talent')">
-              View talent
+              View Board
             </button>
             <button class="btn btn-primary" onclick="scrollToSection('contact')">
-              Become a model
+              Apply
             </button>
           </div>
         </nav>
@@ -1142,78 +994,39 @@
       <section class="hero">
         <div class="container hero-inner">
           <div>
-            <div class="hero-eyebrow">
-              <span class="badge">
-                <span class="badge-dot"></span>
-                Now scouting new faces for 2025 campaigns
-              </span>
+            <div class="hero-kicker">
+              Casting & Representation · 2025
             </div>
             <h1 class="hero-title">
-              Where <span class="accent">new faces</span> blossom into timeless brands.
+              <span>Blossom Studios</span>
+              <span>Model Agency</span>
             </h1>
             <p class="hero-tagline">
               Uniting Chicano culture one model at a time.
             </p>
             <p class="hero-subtitle">
-              Blossom Studios is a boutique agency championing diverse talent for fashion, beauty, and commercial work — from fresh faces to established names.
+              A boutique model agency dedicated to considered casting, long-term development, and quiet, enduring style — from runway to digital campaigns.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" onclick="scrollToSection('contact')">
                 Submit application
               </button>
-              <button class="btn btn-outline" onclick="scrollToSection('services')">
-                Book talent
+              <button class="btn btn-outline" onclick="scrollToSection('talent')">
+                View featured talent
               </button>
-            </div>
-            <div class="hero-note">
-              <strong>24–48h response time</strong>
-              <span class="hero-note-dot"></span>
-              <span>Portfolio or social link recommended</span>
             </div>
             <div class="hero-meta">
               <span>Salt Lake City · Mexico</span>
               <span>Runway · Editorial · Commercial</span>
-              <span>Inclusive & story-driven representation</span>
+              <span>New faces welcome</span>
             </div>
           </div>
           <div class="hero-media" aria-hidden="true">
-            <div class="hero-card">
-              <div class="hero-card-overlay"></div>
-              <div class="hero-card-content">
-                <div class="hero-tag">
-                  <span class="hero-tag-dot"></span>
-                  SS25 Campaign Casting · In progress
-                </div>
-                <h2>BLOSSOM EDITORIAL BOARD</h2>
-                <p>Curated talent for fashion houses, beauty brands, and creative studios.</p>
-                <div class="hero-card-meta">
-                  <span>12 talents shortlisted</span>
-                  <span>Bookings open · Q2</span>
-                </div>
-              </div>
-              <div class="hero-chip-row">
-                <div class="hero-chip">
-                  <img
-                    src="https://images.pexels.com/photos/1988681/pexels-photo-1988681.jpeg?auto=compress&cs=tinysrgb&w=200"
-                    alt="Model headshot"
-                  />
-                  <span>
-                    <strong>Amara · 5'9"</strong> · Beauty & runway
-                  </span>
-                </div>
-                <div class="hero-chip">
-                  <span>↻</span>
-                  <span>Same-day digital packages for clients</span>
-                </div>
-              </div>
-              <div class="hero-floating-card">
-                <strong>New faces board</strong>
-                <span>Updated weekly with fresh talent from global submissions.</span>
-                <div class="pill-row">
-                  <span class="pill">Runway</span>
-                  <span class="pill">Beauty</span>
-                  <span class="pill">Lifestyle</span>
-                </div>
+            <div class="hero-frame">
+              <div class="hero-image"></div>
+              <div class="hero-caption">
+                <span>Primary Board</span>
+                <span>SS25 · In development</span>
               </div>
             </div>
           </div>
@@ -1224,53 +1037,43 @@
       <section id="about">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">A studio-first approach to representation.</h2>
+            <h2 class="section-title">About the agency</h2>
             <p class="section-subtitle">
-              We bridge the gap between talent and creative teams, prioritizing kindness, clarity, and long-term growth over one-off bookings.
+              Blossom Studios represents a focused board of talent for clients who value character, culture, and craft as much as image.
             </p>
           </div>
-          <div class="about-grid">
+          <div class="about-layout">
             <div>
               <div class="about-text">
                 <p>
-                  <strong>Blossom Studios</strong> was founded on a simple idea: talent should feel supported, seen, and celebrated at every stage of their career.
+                  <span class="about-highlight">Built on a studio mindset,</span> Blossom Studios acts as a steady partner to both models and clients — guiding careers with intention and casting projects with care.
                 </p>
                 <p>
-                  Our agency works closely with designers, photographers, and producers to match the right faces with the right stories — from runway shows and editorial campaigns to commercial and digital projects.
+                  We work closely with designers, photographers, and producers to place the right faces in the right stories: runway collections, editorial features, lookbooks, campaigns, and digital-first content.
                 </p>
                 <p>
-                  We champion inclusive casting, transparent communication, and thoughtful career development, helping each model grow at a pace that feels sustainable and authentic.
+                  Our work centers Chicano culture, heritage, and community, making room for talent to be fully themselves on and off set.
                 </p>
               </div>
-              <div class="about-stats">
-                <div class="stat-card">
-                  <div class="stat-value">120+</div>
-                  <div class="stat-label">Signed talents worldwide</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">35+</div>
-                  <div class="stat-label">Brands booked in 2024</div>
-                </div>
-                <div class="stat-card">
-                  <div class="stat-value">4.9★</div>
-                  <div class="stat-label">Client partner rating</div>
-                </div>
+              <div class="about-meta">
+                <span>Measured growth</span>
+                <span>Respect on set</span>
+                <span>Transparent terms</span>
               </div>
             </div>
             <div class="about-card">
               <div class="about-card-title">What we look for</div>
               <p>
-                We review every submission with care. While traditional measurements can matter for certain clients, we also value presence, professionalism, uniqueness, and how you move in front of the camera.
+                Presence over perfection, curiosity over polish. While select clients require traditional measurements, we are equally interested in how you move, listen, and collaborate.
               </p>
-              <div class="about-pill-row">
+              <div class="about-pills">
                 <span class="about-pill">Runway & editorial</span>
                 <span class="about-pill">Commercial & lifestyle</span>
-                <span class="about-pill">Content creators</span>
-                <span class="about-pill">All gender identities</span>
-                <span class="about-pill">New faces welcome</span>
+                <span class="about-pill">Content-driven</span>
+                <span class="about-pill">New faces</span>
               </div>
               <p class="helper">
-                No experience yet? That’s okay. Share clear digitals and a short note about your availability and goals.
+                First-time models are welcome. Clear digitals in natural light and a short note about your availability are often enough to begin a conversation.
               </p>
             </div>
           </div>
@@ -1283,7 +1086,7 @@
           <div class="section-header">
             <h2 class="section-title">Featured talent</h2>
             <p class="section-subtitle">
-              A snapshot of our current board. Full books and additional options are available on request for each project.
+              A small selection from the board. Full books and additional options available upon request for each brief.
             </p>
           </div>
           <div class="models-grid">
@@ -1311,8 +1114,8 @@
               <div class="model-body">
                 <div class="model-name">Amara</div>
                 <div class="model-meta">
-                  <span class="model-city">Age 21</span>
-                  <span class="model-measures">Blossom Studios talent</span>
+                  <span>Age 21</span>
+                  <span class="model-measures">Runway & beauty</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Runway</span>
@@ -1345,8 +1148,8 @@
               <div class="model-body">
                 <div class="model-name">Eyta</div>
                 <div class="model-meta">
-                  <span class="model-city">Age 24</span>
-                  <span class="model-measures">Blossom Studios talent</span>
+                  <span>Age 24</span>
+                  <span class="model-measures">Commercial & lifestyle</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Commercial</span>
@@ -1379,8 +1182,8 @@
               <div class="model-body">
                 <div class="model-name">Jenny</div>
                 <div class="model-meta">
-                  <span class="model-city">Age 22</span>
-                  <span class="model-measures">Blossom Studios talent</span>
+                  <span>Age 22</span>
+                  <span class="model-measures">Beauty & digital</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Beauty</span>
@@ -1415,8 +1218,8 @@
               <div class="model-body">
                 <div class="model-name">Kat</div>
                 <div class="model-meta">
-                  <span class="model-city">Age 26</span>
-                  <span class="model-measures">Blossom Studios talent</span>
+                  <span>Age 26</span>
+                  <span class="model-measures">Campaign & editorial</span>
                 </div>
                 <div class="model-tags">
                   <span class="model-tag">Campaigns</span>
@@ -1425,8 +1228,8 @@
               </div>
             </article>
           </div>
-          <p class="helper" style="margin-top: 0.9rem;">
-            Looking for something specific? Email us your brief and reference boards — we’ll build a tailored casting shortlist.
+          <p class="talent-helper">
+            For full books, digitals, or tailored casting options, send your brief and references to hello@blossomstudios.agency.
           </p>
         </div>
       </section>
@@ -1435,43 +1238,40 @@
       <section id="services">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Services for brands & creatives</h2>
+            <h2 class="section-title">Services</h2>
             <p class="section-subtitle">
-              From first moodboard to final call sheet, we support productions of all sizes with thoughtful casting and communication.
+              Support for labels, studios, and creative teams across editorial, commercial, and digital briefs.
             </p>
           </div>
           <div class="services-grid">
             <article class="service-card">
-              <div class="service-icon">★</div>
               <div class="service-title">Editorial & runway</div>
               <p>
-                Casting and coordination for fashion weeks, editorial shoots, lookbooks, and designer presentations.
+                Casting and coordination for shows, presentations, lookbooks, and editorial stories with an emphasis on presence and line.
               </p>
               <div class="service-footer">
-                <span>Ideal for seasonal collections.</span>
+                <span>Seasonal or one-off.</span>
                 <span class="service-chip">3–10+ talents</span>
               </div>
             </article>
             <article class="service-card">
-              <div class="service-icon">◎</div>
               <div class="service-title">Commercial & e-commerce</div>
               <p>
-                Talent for campaigns, social, catalogs, and product launches featuring inclusive casting and clear usage terms.
+                Boards for campaigns, e-commerce, social, and print featuring inclusive casting and clearly defined usage.
               </p>
               <div class="service-footer">
-                <span>Flexible day rates & usage.</span>
-                <span class="service-chip">Ongoing or one-off</span>
+                <span>Built around your brand.</span>
+                <span class="service-chip">Day or project rates</span>
               </div>
             </article>
             <article class="service-card">
-              <div class="service-icon">∞</div>
-              <div class="service-title">Content & creator partnerships</div>
+              <div class="service-title">Content & creators</div>
               <p>
-                Pair brands with models and creators who can deliver on-brand content for digital and social-first campaigns.
+                Pairing models and creators with brands for digital stories, launches, and ongoing content partnerships.
               </p>
               <div class="service-footer">
-                <span>Great for launches & drops.</span>
-                <span class="service-chip">Creator-led</span>
+                <span>Strong POV, clear deliverables.</span>
+                <span class="service-chip">Digital-first</span>
               </div>
             </article>
           </div>
@@ -1482,21 +1282,18 @@
       <section id="contact">
         <div class="container">
           <div class="section-header">
-            <h2 class="section-title">Let’s work together</h2>
+            <h2 class="section-title">Contact & submissions</h2>
             <p class="section-subtitle">
-              Use the form to apply as a model or to book talent. Our team replies to most messages within two business days.
+              Use the form to apply as a model or to share a casting brief. We respond to most inquiries within two business days.
             </p>
           </div>
           <div class="contact-layout">
             <div class="contact-card">
               <h3>Application & booking form</h3>
               <p>
-                Tell us who you are and what you’re looking for. For model submissions, include at least one link to digitals or a portfolio.
+                For model submissions, include at least one link to digitals or a portfolio. For clients, share dates, location, and references where possible.
               </p>
-              <form
-                class="form-grid"
-                onsubmit="handleSubmit(event)"
-              >
+              <form class="form-grid" onsubmit="handleSubmit(event)">
                 <div class="form-row">
                   <label>
                     Full name
@@ -1511,7 +1308,7 @@
                   <label>
                     I am a...
                     <select name="type" required>
-                      <option value="">Select an option</option>
+                      <option value="">Select</option>
                       <option value="model">Model / aspiring model</option>
                       <option value="brand">Brand / agency / studio</option>
                       <option value="other">Other</option>
@@ -1538,7 +1335,7 @@
                   Message
                   <textarea
                     name="message"
-                    placeholder="Share your project details or tell us about yourself as a model..."
+                    placeholder="Share your goals or project details..."
                     required
                   ></textarea>
                 </label>
@@ -1547,7 +1344,7 @@
                     Send message
                   </button>
                   <div class="form-status" id="formStatus">
-                    This demo form doesn’t send yet — wire it to your email or CRM.
+                    This demo form doesn’t send yet — connect it to your email or CRM to receive submissions.
                   </div>
                 </div>
               </form>
@@ -1560,7 +1357,7 @@
                     Salt Lake City · Mexico · More locations coming soon
                   </div>
                   <span class="helper">
-                    In-person castings by appointment only.
+                    Castings are by appointment only. Remote digitals and video meetings available.
                   </span>
                 </div>
               </div>
@@ -1579,7 +1376,7 @@
               <div class="info-block">
                 <div class="info-label">For models</div>
                 <p class="helper" style="margin: 0;">
-                  You must be at least 16 years old to apply. If you’re under 18, a parent or guardian must be involved in communication and bookings.
+                  You must be at least 16 years old to apply. If you are under 18, a parent or guardian should be involved in all communication and bookings.
                 </p>
               </div>
             </div>
@@ -1603,18 +1400,17 @@
   </div>
 
   <script>
-    // Smooth scrolling helper
+    // Smooth scrolling
     function scrollToSection(id) {
       const el = document.getElementById(id);
-      if (el) {
-        const headerOffset = 80;
-        const rect = el.getBoundingClientRect();
-        const offsetTop = rect.top + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: offsetTop, behavior: "smooth" });
-      }
+      if (!el) return;
+      const headerOffset = 80;
+      const rect = el.getBoundingClientRect();
+      const offsetTop = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
     }
 
-    // Mobile nav toggle
+    // Mobile nav
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
 
@@ -1624,17 +1420,21 @@
       });
     }
 
-    // Demo form handler
+    // Form handler (demo)
     function handleSubmit(event) {
       event.preventDefault();
       const status = document.getElementById("formStatus");
-      status.textContent =
-        "Thank you for your message. Replace this with your own form handler to receive submissions.";
+      if (status) {
+        status.textContent =
+          "Thank you for your message. Connect this form to your own backend or email to receive submissions.";
+      }
     }
 
-    // Year in footer
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    // Footer year
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
 
     // Talent sliders
     function initTalentSliders() {
@@ -1680,7 +1480,7 @@
           });
         });
 
-        // Ensure first slide is visible
+        // ensure first slide visible
         showSlide(0);
       });
     }
